@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        .wrap{
+            padding: 16px;
+        }
+        @keyframes zoomUp {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.15);
+            }
+        }
+
+        .swiper-slide-active .slide-img,
+        .swiper-slide-duplicate-active .slide-img,
+        .swiper-slide-prev .slide-img{
+            animation: zoomUp 10s linear 0s 1 normal both;  
+        }
+        .slide-img img{
+            display: block;
+            width: 100%;
+        }
+        .nav {
+            width: 100%;
+            height: 100px;
+            background-color: aqua;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="slide-img">
+                <img id='1' src="https://picsum.photos/id/1041/1200/640" alt="img1">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="slide-img">
+                <img id='2' src="https://picsum.photos/id/1016/1200/640" alt="img2">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="slide-img">
+                <img id='3' src="https://picsum.photos/id/1056/1200/640" alt="img3">
+              </div>
+            </div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+        <div>
+            <div class="nav">navbar</div>
+        </div>
+      </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        let swipeOption = {
+            loop: true,
+            effect: 'fade',
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            speed: 500,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            effect: 'fade',
+            on: {
+                slideChange: function() {
+                    let el = $('swiper-slide-active')
+
+                    // undifinedの時のハンドリング
+                    if ( el === 'undifined') return;
+
+                    console.log(el.find('div'));
+                    // console.log(el.wrapperEl);
+                    let arr = ['red', 'blue', 'green'];
+                    // document.getElementsByClassName('nav')[0].style.backgroundColor = arr[i];
+                }
+            }
+        }
+        new Swiper('.swiper-container', swipeOption);
+    </script>
+</body>
+</html>
