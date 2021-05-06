@@ -72,7 +72,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         let swipeOption = {
-            loop: true,
+            // loop: true,
             effect: 'fade',
             autoplay: {
                 delay: 4000,
@@ -85,16 +85,12 @@
             },
             effect: 'fade',
             on: {
-                slideChange: function() {
-                    let el = $('swiper-slide-active')
-
-                    // undifinedの時のハンドリング
-                    if ( el === 'undifined') return;
-
-                    console.log(el.find('div'));
-                    // console.log(el.wrapperEl);
+                slideChange: function(e) {
+                    const i = e.realIndex;
+                    
+                    console.log(e.realIndex);
                     let arr = ['red', 'blue', 'green'];
-                    // document.getElementsByClassName('nav')[0].style.backgroundColor = arr[i];
+                    document.getElementsByClassName('nav')[0].style.backgroundColor = arr[i];
                 }
             }
         }
